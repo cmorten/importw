@@ -20,15 +20,29 @@ Permission restricted imports for Deno.
 ---
 
 ```ts
-import { importw } from "https://x.nest.land/importw@0.1.0/mod.ts";
+import { importw } from "https://x.nest.land/importw@0.1.2/mod.ts";
 
-const { log, add } = await importw("https://x.nest.land/importw@0.1.0/examples/service.ts", {
+// Import module from within a worker
+const { log, add } = await importw("https://x.nest.land/importw@0.1.2/examples/service.ts", {
   name: "exampleWorker",
   deno: false,
 });
 
+// Run code within worker
 await log(`add(40, 2) in a worker:`, await add(40, 2));
+
+Deno.exit(0);
 ```
+
+## About
+
+This module is a PoC for demonstrating how one could import modules from within a Deno Worker and expose the methods to the main runtime.
+
+This allows for some level of isolation around the imported module, and allows consumers to restrict an imported module's access to the Deno namespace.
+
+When / if permissions for Deno Workers lands (see <https://github.com/denoland/deno/issues/4867>), this would also allow you to import modules into your Deno project with restrictions greater than (or simply different / scoped) to the rest of your code - something that could be really useful for third-party module security.
+
+This module consists of ports / adaptions of [Comlink](https://github.com/GoogleChromeLabs/comlink) and [import-from-worker](https://github.com/GoogleChromeLabs/import-from-worker) as well as a few other libraries to create the bridge between main runtime and Worker. Due to limited support for Workers in Deno, some features of Comlink etc. are not available as they require structured cloning, transfer objects and the MessageChannel API, which have not yet landed in Deno yet. Simple functional examples work well however - see the [example](./examples/main.ts) for details.
 
 ## Contributing
 
@@ -39,3 +53,5 @@ await log(`add(40, 2) in a worker:`, await add(40, 2));
 ## License
 
 importw is licensed under the [MIT License](./LICENSE.md).
+
+This module makes use of several ported sub-modules, each containing their original license.
