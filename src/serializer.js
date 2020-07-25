@@ -34,7 +34,7 @@ function notObject(o) {
 function getSerialObjWithClassName(
   originObj,
   seen = new WeakMap(),
-  stack = []
+  stack = [],
 ) {
   if (typeof originObj === "function") {
     return `[Function~${originObj.toString()}]`;
@@ -82,7 +82,7 @@ function deserializeFunction(value) {
   const serializedFn = value.match(functionRegex)[1];
 
   return new Function(
-    `return (${serializedFn})(...Array.from(arguments))`
+    `return (${serializedFn})(...Array.from(arguments))`,
   ).bind(self);
 }
 
@@ -201,7 +201,7 @@ const ESSerializer = {
     const classMapping = getClassMappingFromClassArray(classes);
 
     return deserializeCircular(
-      deserializeFromParsedObj(JSON.parse(serializedText), classMapping)
+      deserializeFromParsedObj(JSON.parse(serializedText), classMapping),
     );
   },
 };
