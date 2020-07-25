@@ -33,12 +33,13 @@ function expectMessage(target: any, payload?: any): any {
 export const workerSymbol = Symbol();
 
 export default async function importw(
-  path: any,
+  path: string,
   { name, base = Deno.cwd(), deno = false }: any = {},
 ) {
+  const url = path.includes(":/") ? path : join(base, path);
   const worker = new Worker(import.meta.url, { type: "module", name, deno });
   await expectMessage(worker, "waiting");
-  worker.postMessage(join(base, path));
+  worker.postMessage(url);
   await expectMessage(worker, "ready");
 
   const api = comlink.wrap(worker);

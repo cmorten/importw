@@ -1,18 +1,7 @@
-.PHONY: benchmark build ci deps doc fmt fmt-check lock test typedoc
-
-benchmark:
-	@./benchmarks/run.sh 1 ./benchmarks/middleware.ts
-	@./benchmarks/run.sh 5 ./benchmarks/middleware.ts
-	@./benchmarks/run.sh 10 ./benchmarks/middleware.ts
-	@./benchmarks/run.sh 15 ./benchmarks/middleware.ts
-	@./benchmarks/run.sh 20 ./benchmarks/middleware.ts
-	@./benchmarks/run.sh 30 ./benchmarks/middleware.ts
-	@./benchmarks/run.sh 50 ./benchmarks/middleware.ts
-	@./benchmarks/run.sh 100 ./benchmarks/middleware.ts
-	@echo
+.PHONY: build ci deps doc fmt fmt-check lock test typedoc
 
 build:
-	@deno run --lock=lock.json --reload mod.ts
+	@deno run --lock=lock.json --unstable --reload mod.ts
 
 ci:
 	@make fmt-check
@@ -32,10 +21,10 @@ fmt-check:
 	@deno fmt --check
 
 lock:
-	@deno run --lock=lock.json --lock-write --reload mod.ts
+	@deno run --lock=lock.json --lock-write --unstable --reload mod.ts
 
 test:
-	@deno test --allow-net --allow-read ./test/units/
+	@deno test --unstable --allow-none --allow-net --allow-read
 
 typedoc:
 	@rm -rf docs

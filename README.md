@@ -19,6 +19,17 @@ Permission restricted imports for Deno.
 
 ---
 
+```ts
+import { importw } from "https://x.nest.land/importw@0.1.0/mod.ts";
+
+const { log, add } = await importw("https://x.nest.land/importw@0.1.0/examples/service.ts", {
+  name: "exampleWorker",
+  deno: false,
+});
+
+await log(`add(40, 2) in a worker:`, await add(40, 2));
+```
+
 ## Contributing
 
 [Contributing guide](https://github.com/asos-craigmorten/importw/blob/main/.github/CONTRIBUTING.md)
