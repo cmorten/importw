@@ -44,7 +44,7 @@ When / if permissions for Deno Workers lands (see <https://github.com/denoland/d
 
 This module consists of ports / adaptions of [Comlink](https://github.com/GoogleChromeLabs/comlink) and [import-from-worker](https://github.com/GoogleChromeLabs/import-from-worker) as well as a few other libraries to create the bridge between main runtime and Worker. Due to limited support for Workers in Deno, some features of Comlink etc. are not available as they require structured cloning, transfer objects and the MessageChannel API, which have not yet landed in Deno yet. Simple functional examples work well however.
 
-## Examples
+## Examples
 
 Please refer to [example README](./examples/README.md).
 
