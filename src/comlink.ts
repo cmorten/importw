@@ -17,17 +17,19 @@
  */
 
 import "./messagePortPolyfill.js";
+import { notImplemented } from "./notImplemented.ts";
 import { ESSerializer } from "./serializer.js";
 
-import {
+import { MessageMap, WireValueMap } from "./protocol.ts";
+
+import type {
   Endpoint,
   Message,
-  MessageType,
   WireValue,
-  WireValueType,
+  HandlerWireValue,
 } from "./protocol.ts";
 
-export { Endpoint };
+export type { Endpoint };
 
 export const proxyMarker = Symbol("Comlink.proxy");
 export const releaseProxy = Symbol("Comlink.releaseProxy");
@@ -295,9 +297,10 @@ export const transferHandlers = new Map<
 
 function fromWireValue(value: WireValue): any {
   switch (value.type) {
-    case WireValueType.HANDLER:
-      return transferHandlers.get(value.name)!.deserialize(value.value);
-    case WireValueType.RAW:
+    case WireValueMap.HANDLER:
+      return transferHandlers.get((value as HandlerWireValue).name)!
+        .deserialize(value.value);
+    case WireValueMap.RAW:
       return value.value;
   }
 }
@@ -332,30 +335,31 @@ export function expose(this: any, obj: any, ep: Endpoint = self as any) {
       const rawValue = path.reduce((obj, prop) => obj[prop], objFallback);
 
       switch (type) {
-        case MessageType.GET:
+        case MessageMap.GET:
           {
             returnValue = rawValue;
           }
           break;
-        case MessageType.SET:
+        case MessageMap.SET:
           {
             parent[path.slice(-1)[0]] = fromWireValue(ev.data.value);
             returnValue = true;
           }
           break;
-        case MessageType.APPLY:
+        case MessageMap.APPLY:
           {
             returnValue = rawValue.apply(parent, argumentList);
           }
           break;
-        case MessageType.CONSTRUCT:
+        case MessageMap.CONSTRUCT:
           {
             // TODO: this isn't workable yet...
+            notImplemented();
             const value = new rawValue(...argumentList);
             returnValue = proxy(value);
           }
           break;
-        case MessageType.RELEASE:
+        case MessageMap.RELEASE:
           {
             returnValue = undefined;
           }
@@ -373,7 +377,7 @@ export function expose(this: any, obj: any, ep: Endpoint = self as any) {
         const wireValue = toWireValue(returnValue);
         ep.postMessage({ ...wireValue, id });
 
-        if (type === MessageType.RELEASE) {
+        if (type === MessageMap.RELEASE) {
           // detach after sending release response above.
           ep.removeEventListener("message", callback as any);
         }
@@ -405,7 +409,7 @@ function createProxy<T>(
       if (prop === releaseProxy) {
         return () => {
           return requestResponseMessage(ep, {
-            type: MessageType.RELEASE,
+            type: MessageMap.RELEASE,
             path: path.map((p) => p.toString()),
           }).then(() => {
             isProxyReleased = true;
@@ -419,7 +423,7 @@ function createProxy<T>(
         }
 
         const r = requestResponseMessage(ep, {
-          type: MessageType.GET,
+          type: MessageMap.GET,
           path: path.map((p) => p.toString()),
         }).then(fromWireValue);
 
@@ -438,7 +442,7 @@ function createProxy<T>(
       return requestResponseMessage(
         ep,
         {
-          type: MessageType.SET,
+          type: MessageMap.SET,
           path: [...path, prop].map((p) => p.toString()),
           value,
         },
@@ -459,7 +463,7 @@ function createProxy<T>(
       return requestResponseMessage(
         ep,
         {
-          type: MessageType.APPLY,
+          type: MessageMap.APPLY,
           path: path.map((p) => p.toString()),
           argumentList,
         },
@@ -467,6 +471,7 @@ function createProxy<T>(
     },
     construct(_target, rawArgumentList) {
       // TODO: this isn't workable yet...
+      notImplemented();
       throwIfProxyReleased(isProxyReleased);
 
       const argumentList = processArguments(rawArgumentList);
@@ -474,7 +479,7 @@ function createProxy<T>(
       return requestResponseMessage(
         ep,
         {
-          type: MessageType.CONSTRUCT,
+          type: MessageMap.CONSTRUCT,
           path: path.map((p) => p.toString()),
           argumentList,
         },
@@ -501,17 +506,19 @@ function toWireValue(value: any): WireValue {
       const serializedValue = handler.serialize(value);
 
       return {
-        type: WireValueType.HANDLER,
+        type: WireValueMap.HANDLER,
         name,
         value: serializedValue,
       };
     }
   }
+
   return {
-    type: WireValueType.RAW,
+    type: WireValueMap.RAW,
     value,
   };
 }
+
 (self as any).toWireValue = toWireValue;
 
 function requestResponseMessage(

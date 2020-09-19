@@ -1,5 +1,9 @@
 # ChangeLog
 
+## [0.2.0] - 19-09-2020
+
+- feat: support Deno 1.4.1 and std 0.70.0
+
 ## [0.1.2] - 25-07-2020
 
 - chore: docs update

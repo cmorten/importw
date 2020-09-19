@@ -20,10 +20,10 @@ Permission restricted imports for Deno.
 ---
 
 ```ts
-import { importw } from "https://x.nest.land/importw@0.1.2/mod.ts";
+import { importw } from "https://x.nest.land/importw@0.2.0/mod.ts";
 
 // Import module from within a worker
-const { log, add } = await importw("https://x.nest.land/importw@0.1.2/examples/service.ts", {
+const { log, add } = await importw("https://x.nest.land/importw@0.2.0/examples/service.ts", {
   name: "exampleWorker",
   deno: false,
 });
@@ -42,7 +42,11 @@ This allows for some level of isolation around the imported module, and allows c
 
 When / if permissions for Deno Workers lands (see <https://github.com/denoland/deno/issues/4867>), this would also allow you to import modules into your Deno project with restrictions greater than (or simply different / scoped) to the rest of your code - something that could be really useful for third-party module security.
 
-This module consists of ports / adaptions of [Comlink](https://github.com/GoogleChromeLabs/comlink) and [import-from-worker](https://github.com/GoogleChromeLabs/import-from-worker) as well as a few other libraries to create the bridge between main runtime and Worker. Due to limited support for Workers in Deno, some features of Comlink etc. are not available as they require structured cloning, transfer objects and the MessageChannel API, which have not yet landed in Deno yet. Simple functional examples work well however - see the [example](./examples/main.ts) for details.
+This module consists of ports / adaptions of [Comlink](https://github.com/GoogleChromeLabs/comlink) and [import-from-worker](https://github.com/GoogleChromeLabs/import-from-worker) as well as a few other libraries to create the bridge between main runtime and Worker. Due to limited support for Workers in Deno, some features of Comlink etc. are not available as they require structured cloning, transfer objects and the MessageChannel API, which have not yet landed in Deno yet. Simple functional examples work well however.
+
+## Examples
+
+Please refer to [example README](./examples/README.md).
 
 ## Contributing
 

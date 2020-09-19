@@ -41,6 +41,13 @@ export interface Endpoint extends EventSource {
   start?: () => void;
 }
 
+export const WireValueMap = {
+  RAW: 0,
+  PROXY: 1,
+  THROW: 2,
+  HANDLER: 3,
+};
+
 export const enum WireValueType {
   RAW,
   PROXY,
@@ -64,6 +71,15 @@ export interface HandlerWireValue {
 export type WireValue = RawWireValue | HandlerWireValue;
 
 export type MessageID = string;
+
+export const MessageMap = {
+  GET: 0,
+  SET: 1,
+  APPLY: 2,
+  CONSTRUCT: 3,
+  ENDPOINT: 4,
+  RELEASE: 5,
+};
 
 export const enum MessageType {
   GET,
