@@ -1,5 +1,9 @@
 # ChangeLog
 
+## [0.2.2] - 19-09-2020
+
+- chore: upgrade to eggs@0.2.2 in CI
+
 ## [0.2.1] - 19-09-2020
 
 - chore: upgrade to eggs@0.2.1 in CI
