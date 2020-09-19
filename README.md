@@ -20,10 +20,10 @@ Permission restricted imports for Deno.
 ---
 
 ```ts
-import { importw } from "https://x.nest.land/importw@0.2.0/mod.ts";
+import { importw } from "https://x.nest.land/importw@0.2.1/mod.ts";
 
 // Import module from within a worker
-const { log, add } = await importw("https://x.nest.land/importw@0.2.0/examples/basic/exampleMod.ts", {
+const { log, add } = await importw("https://x.nest.land/importw@0.2.1/examples/basic/exampleMod.ts", {
   name: "exampleWorker",
   deno: false,
 });
