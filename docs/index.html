@@ -99,7 +99,9 @@ Deno.exit(<span class="hljs-number">0</span>);</code></pre>
 					<p>This module is a PoC for demonstrating how one could import modules from within a Deno Worker and expose the methods to the main runtime.</p>
 					<p>This allows for some level of isolation around the imported module, and allows consumers to restrict an imported module&#39;s access to the Deno namespace.</p>
 					<p>When / if permissions for Deno Workers lands (see <a href="https://github.com/denoland/deno/issues/4867">https://github.com/denoland/deno/issues/4867</a>), this would also allow you to import modules into your Deno project with restrictions greater than (or simply different / scoped) to the rest of your code - something that could be really useful for third-party module security.</p>
-					<p>This module consists of ports / adaptions of <a href="https://github.com/GoogleChromeLabs/comlink">Comlink</a> and <a href="https://github.com/GoogleChromeLabs/import-from-worker">import-from-worker</a> as well as a few other libraries to create the bridge between main runtime and Worker. Due to limited support for Workers in Deno, some features of Comlink etc. are not available as they require structured cloning, transfer objects and the MessageChannel API, which have not yet landed in Deno yet. Simple functional examples work well however - see the <a href="./examples/main.ts">example</a> for details.</p>
+					<p>This module consists of ports / adaptions of <a href="https://github.com/GoogleChromeLabs/comlink">Comlink</a> and <a href="https://github.com/GoogleChromeLabs/import-from-worker">import-from-worker</a> as well as a few other libraries to create the bridge between main runtime and Worker. Due to limited support for Workers in Deno, some features of Comlink etc. are not available as they require structured cloning, transfer objects and the MessageChannel API, which have not yet landed in Deno yet. Simple functional examples work well however.</p>
+					<p>## Examples</p>
+					<p>Please refer to <a href="./examples/README.md">example README</a>.</p>
 					<a href="#contributing" id="contributing" style="color: inherit; text-decoration: none;">
 						<h2>Contributing</h2>
 					</a>
@@ -123,6 +125,9 @@ Deno.exit(<span class="hljs-number">0</span>);</code></pre>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/_importw_.html">&quot;importw&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_notimplemented_.html">&quot;not<wbr>Implemented&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/_protocol_.html">&quot;protocol&quot;</a>

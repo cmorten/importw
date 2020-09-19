@@ -17,7 +17,10 @@ try {
   // Expect error to be thrown
   await denoCwd();
 } catch (e) {
-  await log(`Deno.cwd() in a worker without access to Deno namespace throwing an error:`, e.message);
+  await log(
+    `Deno.cwd() in a worker without access to Deno namespace throwing an error:`,
+    e.message,
+  );
 }
 
 // Re-import `log` and `denoCwd` from a worker with Deno namespace enabled
@@ -27,6 +30,9 @@ try {
 ));
 
 // Should now log the CWD from within the worker
-await log(`Deno.cwd() in a worker with access to Deno namespace:`, await denoCwd());
+await log(
+  `Deno.cwd() in a worker with access to Deno namespace:`,
+  await denoCwd(),
+);
 
 Deno.exit(0);
