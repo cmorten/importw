@@ -1,6 +1,6 @@
 # Issue
 
-[#_ISSUE_ID_](https://github.com/asos-craigmorten/importw/issues/_ISSUE_ID_)
+Fixes <#_ISSUE_ID_>
 
 ## Details
 

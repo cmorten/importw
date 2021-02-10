@@ -23,13 +23,13 @@ try {
   );
 }
 
-// Re-import `log` and `denoCwd` from a worker with Deno namespace enabled
+// Re-import `log` and `denoCwd` from a Worker with Deno namespace enabled
 ({ log, denoCwd } = await importw(
   "./examples/basic/exampleMod.ts",
   { name: "exampleWorkerWithDenoNamespace", deno: true },
 ));
 
-// Should now log the CWD from within the worker
+// Should now log the CWD from within the Worker
 await log(
   `Deno.cwd() in a worker with access to Deno namespace:`,
   await denoCwd(),

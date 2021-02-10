@@ -34,7 +34,11 @@ export const workerSymbol = Symbol();
 
 export default async function importw(
   path: string,
-  { name, base = Deno.cwd(), deno = false }: any = {},
+  { name, base = Deno.cwd(), deno = false }: {
+    name?: string;
+    base?: string;
+    deno?: any;
+  } = {},
 ) {
   const url = path.includes(":/") ? path : join(base, path);
   const worker = new Worker(import.meta.url, { type: "module", name, deno });

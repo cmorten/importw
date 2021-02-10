@@ -1,6 +1,6 @@
 # Basic
 
-This directory contains a simple example (`example.ts`) of using `importw` to import a module (`exampleMod.ts`) inside a Worker with and without access to the Deno namespace.
+This directory contains a simple example (`main.ts`) of using `importw` to import a module (`exampleMod.ts`) inside a Worker with and without access to the Deno namespace.
 
 It demonstrates that not providing access to the Deno namespace prevents the imported module from using privileged APIs such as `Deno.cwd()`, and the providing access does allow such APIs to be used.
 

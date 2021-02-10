@@ -24,9 +24,9 @@ import { MessageMap, WireValueMap } from "./protocol.ts";
 
 import type {
   Endpoint,
+  HandlerWireValue,
   Message,
   WireValue,
-  HandlerWireValue,
 } from "./protocol.ts";
 
 export type { Endpoint };

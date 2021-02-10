@@ -16,14 +16,20 @@ Permission restricted imports for Deno.
    <a href="http://hits.dwyl.com/asos-craigmorten/importw"><img src="http://hits.dwyl.com/asos-craigmorten/importw.svg" alt="importw repository visit count" /></a>
    <a href="https://nest.land/package/importw"><img src="https://nest.land/badge.svg" alt="Published on nest.land" /></a>
 </p>
+<p align="center">
+   <a href="https://deno.land/x/importw"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fdeno-visualizer.danopia.net%2Fshields%2Flatest-version%2Fx%2Fimportw%2Fmod.ts" alt="importw latest /x/ version" /></a>
+   <a href="https://deno-visualizer.danopia.net/dependencies-of/https/deno.land/x/importw/mod.ts"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fdeno-visualizer.danopia.net%2Fshields%2Fdep-count%2Fx%2Fimportw%2Fmod.ts" alt="importw dependency count" /></a>
+   <a href="https://deno-visualizer.danopia.net/dependencies-of/https/deno.land/x/importw/mod.ts"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fdeno-visualizer.danopia.net%2Fshields%2Fupdates%2Fx%2Fimportw%2Fmod.ts" alt="importw dependency outdatedness" /></a>
+   <a href="https://deno-visualizer.danopia.net/dependencies-of/https/deno.land/x/importw/mod.ts"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fdeno-visualizer.danopia.net%2Fshields%2Fcache-size%2Fx%2Fimportw%2Fmod.ts" alt="importw cached size" /></a>
+</p>
 
 ---
 
 ```ts
-import { importw } from "https://x.nest.land/importw@0.2.2/mod.ts";
+import { importw } from "https://x.nest.land/importw@0.3.0/mod.ts";
 
 // Import module from within a worker
-const { log, add } = await importw("https://x.nest.land/importw@0.2.2/examples/basic/exampleMod.ts", {
+const { log, add } = await importw("https://x.nest.land/importw@0.3.0/examples/basic/exampleMod.ts", {
   name: "exampleWorker",
   deno: false,
 });
@@ -46,7 +52,7 @@ This module consists of ports / adaptions of [Comlink](https://github.com/Google
 
 ## Examples
 
-Please refer to [example README](./examples/README.md).
+Please refer to [examples README](./examples/README.md).
 
 ## Contributing
 
