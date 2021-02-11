@@ -22,4 +22,3 @@ const { denoCwd } = await importw(
  * `error: Uncaught (in promise) PermissionDenied: read access to <CWD>, run again with the --allow-read flag`
  */
 await denoCwd(); // BOOM!
-
