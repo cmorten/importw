@@ -13,7 +13,6 @@ Permission restricted imports for Deno.
    <img src="https://img.shields.io/github/forks/asos-craigmorten/importw" alt="importw forks" />
    <img src="https://img.shields.io/github/license/asos-craigmorten/importw" alt="importw license" />
    <a href="https://GitHub.com/asos-craigmorten/importw/graphs/commit-activity"><img src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" alt="importw is maintained" /></a>
-   <a href="http://hits.dwyl.com/asos-craigmorten/importw"><img src="http://hits.dwyl.com/asos-craigmorten/importw.svg" alt="importw repository visit count" /></a>
    <a href="https://nest.land/package/importw"><img src="https://nest.land/badge.svg" alt="Published on nest.land" /></a>
 </p>
 <p align="center">
