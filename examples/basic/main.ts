@@ -1,9 +1,10 @@
-import { importw } from "../../mod.ts";
+import { importw, workerSymbol } from "../../mod.ts";
 
-let { log, add, multiply, denoCwd } = await importw(
-  "./examples/basic/exampleMod.ts",
-  { name: "exampleWorker" },
-);
+let { log, add, multiply, denoCwd, _MyClass, [workerSymbol]: worker } =
+  await importw(
+    "./examples/basic/exampleMod.ts",
+    { name: "exampleWorker" },
+  );
 
 await log(`add(40, 2) in a worker:`, await add(40, 2));
 await log(`multiply(40, 2) in a worker:`, await multiply(40, 2));
@@ -35,4 +36,4 @@ await log(
   await denoCwd(),
 );
 
-Deno.exit(0);
+(worker as Worker).terminate();

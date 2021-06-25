@@ -1,9 +1,10 @@
+// deno-lint-ignore-file no-explicit-any
 /**
  * This is a limited port of comlink
  * (https://github.com/GoogleChromeLabs/comlink) for Deno.
- * 
+ *
  * comlink originally licensed as follows:
- * 
+ *
  * Copyright 2019 Google Inc. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,16 +17,22 @@
  * limitations under the License.
  */
 
+import { MessagePortPolyfill } from "./messagePortPolyfill.js";
+
+// TODO: use built-in type once available
+// REF: https://developer.mozilla.org/en-US/docs/Web/API/Transferable
+export type Transferable = ArrayBuffer | MessagePortPolyfill;
+
 export interface EventSource {
   addEventListener(
     type: string,
     listener: EventListenerOrEventListenerObject,
-    options?: {},
+    options?: unknown,
   ): void;
   removeEventListener(
     type: string,
     listener: EventListenerOrEventListenerObject,
-    options?: {},
+    options?: unknown,
   ): void;
 }
 
@@ -33,11 +40,12 @@ export interface PostMessageWithOrigin {
   postMessage(
     message: any,
     targetOrigin: string,
+    transferables?: Transferable[],
   ): void;
 }
 
 export interface Endpoint extends EventSource {
-  postMessage(message: any): void;
+  postMessage(message: any, transferables?: Transferable[]): void;
   start?: () => void;
 }
 
@@ -58,7 +66,7 @@ export const enum WireValueType {
 export interface RawWireValue {
   id?: string;
   type: WireValueType.RAW;
-  value: {};
+  value: unknown;
 }
 
 export interface HandlerWireValue {

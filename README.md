@@ -25,27 +25,43 @@ Permission restricted imports for Deno.
 ---
 
 ```ts
-import { importw } from "https://x.nest.land/importw@0.3.0/mod.ts";
+import {
+  importw,
+  workerSymbol,
+} from "https://x.nest.land/importw@0.4.0/mod.ts";
 
 // Import module from within a worker
-const { log, add } = await importw("https://x.nest.land/importw@0.3.0/examples/basic/exampleMod.ts", {
-  name: "exampleWorker",
-  deno: false,
-});
+const { log, add, [workerSymbol]: worker } = await importw(
+  "https://x.nest.land/importw@0.4.0/examples/basic/exampleMod.ts",
+  {
+    name: "exampleWorker",
+    deno: false,
+  },
+);
 
 // Run code within worker
 await log(`add(40, 2) in a worker:`, await add(40, 2));
 
-Deno.exit(0);
+(worker as Worker).terminate();
 ```
 
 ## About
 
-This module is a PoC for demonstrating how one could import modules from within a Deno Worker and expose the methods to the main runtime.
+This module is a PoC for demonstrating how one could import modules from within
+a Deno Worker and expose the methods to the main runtime.
 
-This allows for isolation around the imported module, and allows consumers to restrict an imported module's access to the Deno namespace and / or privileged operations.
+This allows for isolation around the imported module, and allows consumers to
+restrict an imported module's access to the Deno namespace and / or privileged
+operations.
 
-This module consists of ports / adaptions of [Comlink](https://github.com/GoogleChromeLabs/comlink) and [import-from-worker](https://github.com/GoogleChromeLabs/import-from-worker) as well as a few other libraries to create the bridge between main runtime and Worker. Due to limited support for Workers in Deno, some features of Comlink etc. are not available as they require structured cloning, transfer objects and the MessageChannel API, which have not yet landed in Deno yet. Simple functional examples work well however.
+This module consists of ports / adaptions of
+[Comlink](https://github.com/GoogleChromeLabs/comlink) and
+[import-from-worker](https://github.com/GoogleChromeLabs/import-from-worker) as
+well as a few other libraries to create the bridge between main runtime and
+Worker. Due to limited support for Workers in Deno, some features of Comlink
+etc. are not available as they require structured cloning, transfer objects and
+the MessageChannel API, which have not yet landed in Deno yet. Simple functional
+examples work well however.
 
 ## Examples
 
@@ -61,4 +77,5 @@ Please refer to [examples README](./examples/README.md).
 
 importw is licensed under the [MIT License](./LICENSE.md).
 
-This module makes use of several ported sub-modules, each containing their original license.
+This module makes use of several ported sub-modules, each containing their
+original license.

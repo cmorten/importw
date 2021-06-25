@@ -2,7 +2,7 @@
  * Port of message-port-polyfill (https://github.com/rocwind/message-port-polyfill) for Deno.
  *
  * message-port-polyfill originally licensed as follows:
- * 
+ *
  * MIT License
  *
  * Copyright (c) 2019 Roc

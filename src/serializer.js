@@ -51,7 +51,7 @@ function getSerialObjWithClassName(
   seen.set(originObj, stack.join("."));
 
   if (Array.isArray(originObj)) {
-    let serialArr = [];
+    const serialArr = [];
 
     for (let i = 0; i < originObj.length; i++) {
       serialArr.push(getSerialObjWithClassName(originObj[i], seen, stack));
@@ -60,14 +60,14 @@ function getSerialObjWithClassName(
     return serialArr;
   }
 
-  let serialObj = {};
+  const serialObj = {};
 
-  for (let k in originObj) {
-    let v = originObj[k];
+  for (const k in originObj) {
+    const v = originObj[k];
     serialObj[k] = getSerialObjWithClassName(v, seen, [...stack, k]);
   }
 
-  let className = originObj.constructor.name;
+  const className = originObj.constructor.name;
 
   if (className !== "Object") {
     serialObj.className = className;
@@ -102,15 +102,15 @@ function deserializeFromParsedObj(parsedObj, classMapping) {
     resultObj = Object.create(classObj.prototype);
   }
 
-  for (let k in parsedObj) {
+  for (const k in parsedObj) {
     if (k === "className") {
       continue;
     }
 
-    let v = parsedObj[k];
+    const v = parsedObj[k];
 
     if (Array.isArray(v)) {
-      let deSerialArr = [];
+      const deSerialArr = [];
 
       for (let i = 0; i < v.length; i++) {
         deSerialArr.push(deserializeFromParsedObj(v[i], classMapping));
@@ -156,7 +156,7 @@ function deserializeCircular(obj, originalObj) {
     originalObj = obj;
   }
 
-  for (let k in obj) {
+  for (const k in obj) {
     if (k === "className") {
       continue;
     }
@@ -182,11 +182,11 @@ function deserializeCircular(obj, originalObj) {
 }
 
 function getClassMappingFromClassArray(classes) {
-  let classArr = classes && Array.isArray(classes) ? classes : [];
+  const classArr = classes && Array.isArray(classes) ? classes : [];
 
-  let classMapping = {};
+  const classMapping = {};
   for (let i = 0; i < classArr.length; i++) {
-    let classObj = classArr[i];
+    const classObj = classArr[i];
     classMapping[classObj.name] = classObj;
   }
 

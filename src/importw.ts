@@ -1,7 +1,8 @@
+// deno-lint-ignore-file no-explicit-any
 /**
  * This is a limited port of import-from-worker
  * (https://github.com/GoogleChromeLabs/import-from-worker) for Deno.
- * 
+ *
  * Copyright 2020 Google Inc. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,7 +31,7 @@ function expectMessage(target: any, payload?: any): any {
   });
 }
 
-export const workerSymbol = Symbol();
+export const workerSymbol = Symbol("WORKER_SYMBOL");
 
 export default async function importw(
   path: string,

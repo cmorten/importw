@@ -1,6 +1,7 @@
+// deno-lint-ignore-file no-explicit-any
 /**
  * Log messages prefixed with the name of the window / worker.
- * 
+ *
  * @param {any} ...msg messages to log
  */
 export function log(...msg: any[]) {
@@ -9,9 +10,9 @@ export function log(...msg: any[]) {
 
 /**
  * Adds two numbers.
- * 
+ *
  * @param {number} a
- * @param {number} b 
+ * @param {number} b
  */
 export function add(a: number, b: number) {
   return a + b;
@@ -19,9 +20,9 @@ export function add(a: number, b: number) {
 
 /**
  * Multiplies two numbers.
- * 
+ *
  * @param {number} a
- * @param {number} b 
+ * @param {number} b
  */
 export function multiply(a: number, b: number) {
   return a * b;

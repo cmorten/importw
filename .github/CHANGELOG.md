@@ -1,5 +1,11 @@
 # ChangeLog
 
+## [0.4.0] - 25-06-2021
+
+- feat: support Deno `1.11.2` and std `0.99.0`
+- feat: export Symbol to allow consumers to gain access to the worker and terminate it
+- ci: add linting and smoke tests
+
 ## [0.3.0] - 10-02-2021
 
 - feat: support Deno 1.7.2 and std 0.85.0

@@ -1,11 +1,12 @@
 {
   "deno.enable": true,
   "deno.unstable": true,
+  "deno.lint": true,
   "[typescript]": {
     "editor.defaultFormatter": "denoland.vscode-deno"
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "denoland.vscode-deno"
   },
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.defaultFormatter": "denoland.vscode-deno"
 }
