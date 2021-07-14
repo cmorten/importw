@@ -6,7 +6,8 @@
 - feat: support using classes in the worker
 - docs: add remote module example
 - feat: BREAKING: remove default export, change Symbol for accessing the worker to `worker`
-- feat: add new Symbol for terminating the Worker `release` 
+- feat: add new Symbol for terminating the Worker `release`
+- ci: test on windows and macos
 
 ## [0.4.0] - 25-06-2021
 
