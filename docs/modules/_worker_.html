@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;notImplemented&quot; | importw</title>
+	<title>&quot;worker&quot; | importw</title>
 	<meta name="description" content="Documentation for importw">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,10 +54,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_notimplemented_.html">&quot;notImplemented&quot;</a>
+					<a href="_worker_.html">&quot;worker&quot;</a>
 				</li>
 			</ul>
-			<h1>Module &quot;notImplemented&quot;</h1>
+			<h1>Module &quot;worker&quot;</h1>
 		</div>
 	</div>
 </header>
@@ -71,7 +71,7 @@
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_notimplemented_.html#notimplemented" class="tsd-kind-icon">not<wbr>Implemented</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_worker_.html#expose" class="tsd-kind-icon">expose</a></li>
 							</ul>
 						</section>
 					</div>
@@ -80,19 +80,25 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
-					<a name="notimplemented" class="tsd-anchor"></a>
-					<h3>not<wbr>Implemented</h3>
+					<a name="expose" class="tsd-anchor"></a>
+					<h3>expose</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">not<wbr>Implemented<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">expose<span class="tsd-signature-symbol">(</span>worker<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">WorkerGlobalScope</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-symbol">typeof </span><span class="tsd-signature-type">globalThis</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/asos-craigmorten/importw/blob/94664ca/src/notImplemented.ts#L1">notImplemented.ts:1</a></li>
+									<li>Defined in <a href="https://github.com/asos-craigmorten/importw/blob/b1eca1a/src/worker.ts#L8">worker.ts:8</a></li>
 								</ul>
 							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> worker: <span class="tsd-signature-type">WorkerGlobalScope</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-symbol">typeof </span><span class="tsd-signature-type">globalThis</span><span class="tsd-signature-symbol"> = self</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -105,23 +111,26 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="_comlink_.html">&quot;comlink&quot;</a>
+						<a href="_comlink_d_.html">&quot;comlink.d&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_expectmessage_.html">&quot;expect<wbr>Message&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="_importw_.html">&quot;importw&quot;</a>
 					</li>
-					<li class="current tsd-kind-module">
-						<a href="_notimplemented_.html">&quot;not<wbr>Implemented&quot;</a>
-					</li>
 					<li class=" tsd-kind-module">
-						<a href="_protocol_.html">&quot;protocol&quot;</a>
+						<a href="_protocol_d_.html">&quot;protocol.d&quot;</a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="_worker_.html">&quot;worker&quot;</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="_notimplemented_.html#notimplemented" class="tsd-kind-icon">not<wbr>Implemented</a>
+						<a href="_worker_.html#expose" class="tsd-kind-icon">expose</a>
 					</li>
 				</ul>
 			</nav>
@@ -133,7 +142,6 @@
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
-				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
 				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
 				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>

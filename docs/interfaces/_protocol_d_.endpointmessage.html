@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>PostMessageWithOrigin | importw</title>
+	<title>EndpointMessage | importw</title>
 	<meta name="description" content="Documentation for importw">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,13 +54,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_protocol_.html">&quot;protocol&quot;</a>
+					<a href="../modules/_protocol_d_.html">&quot;protocol.d&quot;</a>
 				</li>
 				<li>
-					<a href="_protocol_.postmessagewithorigin.html">PostMessageWithOrigin</a>
+					<a href="_protocol_d_.endpointmessage.html">EndpointMessage</a>
 				</li>
 			</ul>
-			<h1>Interface PostMessageWithOrigin</h1>
+			<h1>Interface EndpointMessage</h1>
 		</div>
 	</div>
 </header>
@@ -71,7 +71,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">PostMessageWithOrigin</span>
+						<span class="target">EndpointMessage</span>
 					</li>
 				</ul>
 			</section>
@@ -80,44 +80,36 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Methods</h3>
+							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_protocol_.postmessagewithorigin.html#postmessage" class="tsd-kind-icon">post<wbr>Message</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_protocol_d_.endpointmessage.html#id" class="tsd-kind-icon">id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_protocol_d_.endpointmessage.html#type" class="tsd-kind-icon">type</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="postmessage" class="tsd-anchor"></a>
-					<h3>post<wbr>Message</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">post<wbr>Message<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, targetOrigin<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, transferables<span class="tsd-signature-symbol">?: </span><a href="../modules/_protocol_.html#transferable" class="tsd-signature-type">Transferable</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/asos-craigmorten/importw/blob/94664ca/src/protocol.ts#L40">protocol.ts:40</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>message: <span class="tsd-signature-type">any</span></h5>
-								</li>
-								<li>
-									<h5>targetOrigin: <span class="tsd-signature-type">string</span></h5>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> transferables: <a href="../modules/_protocol_.html#transferable" class="tsd-signature-type">Transferable</a><span class="tsd-signature-symbol">[]</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="id" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> id</h3>
+					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <a href="../modules/_protocol_d_.html#messageid" class="tsd-signature-type">MessageID</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/asos-craigmorten/importw/blob/b1eca1a/src/protocol.d.ts#L88">protocol.d.ts:88</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="type" class="tsd-anchor"></a>
+					<h3>type</h3>
+					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <a href="../enums/_protocol_d_.messagetype.html#endpoint" class="tsd-signature-type">ENDPOINT</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/asos-craigmorten/importw/blob/b1eca1a/src/protocol.d.ts#L89">protocol.d.ts:89</a></li>
+						</ul>
+					</aside>
 				</section>
 			</section>
 		</div>
@@ -128,86 +120,83 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="../modules/_comlink_.html">&quot;comlink&quot;</a>
+						<a href="../modules/_comlink_d_.html">&quot;comlink.d&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_expectmessage_.html">&quot;expect<wbr>Message&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="../modules/_importw_.html">&quot;importw&quot;</a>
 					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/_notimplemented_.html">&quot;not<wbr>Implemented&quot;</a>
-					</li>
 					<li class="current tsd-kind-module">
-						<a href="../modules/_protocol_.html">&quot;protocol&quot;</a>
+						<a href="../modules/_protocol_d_.html">&quot;protocol.d&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_worker_.html">&quot;worker&quot;</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-enum tsd-parent-kind-module">
-						<a href="../enums/_protocol_.messagetype.html" class="tsd-kind-icon">Message<wbr>Type</a>
+						<a href="../enums/_protocol_d_.messagetype.html" class="tsd-kind-icon">Message<wbr>Type</a>
 					</li>
 					<li class=" tsd-kind-enum tsd-parent-kind-module">
-						<a href="../enums/_protocol_.wirevaluetype.html" class="tsd-kind-icon">Wire<wbr>Value<wbr>Type</a>
+						<a href="../enums/_protocol_d_.wirevaluetype.html" class="tsd-kind-icon">Wire<wbr>Value<wbr>Type</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_protocol_.applymessage.html" class="tsd-kind-icon">Apply<wbr>Message</a>
+						<a href="_protocol_d_.applymessage.html" class="tsd-kind-icon">Apply<wbr>Message</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_protocol_.constructmessage.html" class="tsd-kind-icon">Construct<wbr>Message</a>
+						<a href="_protocol_d_.constructmessage.html" class="tsd-kind-icon">Construct<wbr>Message</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_protocol_.endpoint.html" class="tsd-kind-icon">Endpoint</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_protocol_.endpointmessage.html" class="tsd-kind-icon">Endpoint<wbr>Message</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_protocol_.eventsource.html" class="tsd-kind-icon">Event<wbr>Source</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_protocol_.getmessage.html" class="tsd-kind-icon">Get<wbr>Message</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_protocol_.handlerwirevalue.html" class="tsd-kind-icon">Handler<wbr>Wire<wbr>Value</a>
+						<a href="_protocol_d_.endpoint.html" class="tsd-kind-icon">Endpoint</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-module">
-						<a href="_protocol_.postmessagewithorigin.html" class="tsd-kind-icon">Post<wbr>Message<wbr>With<wbr>Origin</a>
+						<a href="_protocol_d_.endpointmessage.html" class="tsd-kind-icon">Endpoint<wbr>Message</a>
 						<ul>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="_protocol_.postmessagewithorigin.html#postmessage" class="tsd-kind-icon">post<wbr>Message</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_protocol_d_.endpointmessage.html#id" class="tsd-kind-icon">id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_protocol_d_.endpointmessage.html#type" class="tsd-kind-icon">type</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_protocol_.rawwirevalue.html" class="tsd-kind-icon">Raw<wbr>Wire<wbr>Value</a>
+						<a href="_protocol_d_.eventsource.html" class="tsd-kind-icon">Event<wbr>Source</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_protocol_.releasemessage.html" class="tsd-kind-icon">Release<wbr>Message</a>
+						<a href="_protocol_d_.getmessage.html" class="tsd-kind-icon">Get<wbr>Message</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_protocol_.setmessage.html" class="tsd-kind-icon">Set<wbr>Message</a>
+						<a href="_protocol_d_.handlerwirevalue.html" class="tsd-kind-icon">Handler<wbr>Wire<wbr>Value</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="_protocol_d_.postmessagewithorigin.html" class="tsd-kind-icon">Post<wbr>Message<wbr>With<wbr>Origin</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="_protocol_d_.rawwirevalue.html" class="tsd-kind-icon">Raw<wbr>Wire<wbr>Value</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="_protocol_d_.releasemessage.html" class="tsd-kind-icon">Release<wbr>Message</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="_protocol_d_.setmessage.html" class="tsd-kind-icon">Set<wbr>Message</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
-						<a href="../modules/_protocol_.html#message" class="tsd-kind-icon">Message</a>
+						<a href="../modules/_protocol_d_.html#message" class="tsd-kind-icon">Message</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
-						<a href="../modules/_protocol_.html#messageid" class="tsd-kind-icon">MessageID</a>
+						<a href="../modules/_protocol_d_.html#messageid" class="tsd-kind-icon">MessageID</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
-						<a href="../modules/_protocol_.html#transferable" class="tsd-kind-icon">Transferable</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
-						<a href="../modules/_protocol_.html#wirevalue" class="tsd-kind-icon">Wire<wbr>Value</a>
-					</li>
-					<li class=" tsd-kind-object-literal tsd-parent-kind-module">
-						<a href="../modules/_protocol_.html#messagemap" class="tsd-kind-icon">Message<wbr>Map</a>
-					</li>
-					<li class=" tsd-kind-object-literal tsd-parent-kind-module">
-						<a href="../modules/_protocol_.html#wirevaluemap" class="tsd-kind-icon">Wire<wbr>Value<wbr>Map</a>
+						<a href="../modules/_protocol_d_.html#wirevalue" class="tsd-kind-icon">Wire<wbr>Value</a>
 					</li>
 				</ul>
 			</nav>
@@ -219,7 +208,6 @@
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
-				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
 				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
 				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
@@ -229,7 +217,7 @@
 			<ul class="tsd-legend">
 				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
 				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>

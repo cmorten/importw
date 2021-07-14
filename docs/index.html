@@ -88,39 +88,43 @@
 					<hr>
 					<pre><code class="language-ts"><span class="hljs-keyword">import</span> {
   importw,
-  workerSymbol,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;https://x.nest.land/importw@0.4.0/mod.ts&quot;</span>;
+  release,
+  worker,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;https://deno.land/x/importw@1.0.0/mod.ts&quot;</span>;
 
-<span class="hljs-comment">// Import module from within a worker</span>
-<span class="hljs-keyword">const</span> { log, add, [workerSymbol]: worker } = <span class="hljs-keyword">await</span> importw(
-  <span class="hljs-string">&quot;https://x.nest.land/importw@0.4.0/examples/basic/exampleMod.ts&quot;</span>,
+<span class="hljs-comment">// Import module from within a worker.</span>
+<span class="hljs-keyword">const</span> { log, add, [release]: terminate, [worker]: workerRef } = <span class="hljs-keyword">await</span> importw(
+  <span class="hljs-string">&quot;https://deno.land/x/importw@1.0.0/examples/basic/exampleMod.ts&quot;</span>,
   {
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;exampleWorker&quot;</span>,
     <span class="hljs-attr">deno</span>: <span class="hljs-literal">false</span>,
   },
 );
 
-<span class="hljs-comment">// Run code within worker</span>
+<span class="hljs-comment">// Have access to the underlying Worker</span>
+<span class="hljs-built_in">console</span>.log(workerRef.constructor.name); <span class="hljs-comment">// Worker</span>
+
+<span class="hljs-comment">// Run code within the Worker</span>
 <span class="hljs-keyword">await</span> log(<span class="hljs-string">`add(40, 2) in a worker:`</span>, <span class="hljs-keyword">await</span> add(<span class="hljs-number">40</span>, <span class="hljs-number">2</span>));
 
-(worker <span class="hljs-keyword">as</span> Worker).terminate();
+<span class="hljs-comment">// Gracefully release Worker resources</span>
+<span class="hljs-keyword">await</span> terminate();
 </code></pre>
 					<a href="#about" id="about" style="color: inherit; text-decoration: none;">
 						<h2>About</h2>
 					</a>
-					<p>This module is a PoC for demonstrating how one could import modules from within
-					a Deno Worker and expose the methods to the main runtime.</p>
-					<p>This allows for isolation around the imported module, and allows consumers to
-						restrict an imported module&#39;s access to the Deno namespace and / or privileged
-					operations.</p>
+					<p>This module allows users to import modules from within a Deno Worker and expose
+					the methods to the main runtime.</p>
+					<p>This allows for a degree of isolation around the imported module, and allows
+						consumers to restrict an imported module&#39;s access to the Deno namespace and / or
+					privileged operations.</p>
+					<p><strong>Note:</strong> this module does not provide full isolation as Workers run in-process.
+						If your code is long running you may be vulnerable to side channel timing
+					attacks if you are using this module for security purposes.</p>
 					<p>This module consists of ports / adaptions of
 						<a href="https://github.com/GoogleChromeLabs/comlink">Comlink</a> and
-						<a href="https://github.com/GoogleChromeLabs/import-from-worker">import-from-worker</a> as
-						well as a few other libraries to create the bridge between main runtime and
-						Worker. Due to limited support for Workers in Deno, some features of Comlink
-						etc. are not available as they require structured cloning, transfer objects and
-						the MessageChannel API, which have not yet landed in Deno yet. Simple functional
-					examples work well however.</p>
+						<a href="https://github.com/GoogleChromeLabs/import-from-worker">import-from-worker</a> to
+					create the bridge between main runtime and Worker.</p>
 					<a href="#examples" id="examples" style="color: inherit; text-decoration: none;">
 						<h2>Examples</h2>
 					</a>
@@ -145,16 +149,19 @@
 						<a href="globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_comlink_.html">&quot;comlink&quot;</a>
+						<a href="modules/_comlink_d_.html">&quot;comlink.d&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_expectmessage_.html">&quot;expect<wbr>Message&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/_importw_.html">&quot;importw&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_notimplemented_.html">&quot;not<wbr>Implemented&quot;</a>
+						<a href="modules/_protocol_d_.html">&quot;protocol.d&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_protocol_.html">&quot;protocol&quot;</a>
+						<a href="modules/_worker_.html">&quot;worker&quot;</a>
 					</li>
 				</ul>
 			</nav>
@@ -170,7 +177,6 @@
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
-				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
 				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
 				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
