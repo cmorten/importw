@@ -1,9 +1,8 @@
 import { importw, release } from "../../mod.ts";
+import { resolve } from "https://deno.land/std@0.101.0/path/mod.ts";
 
 export async function main() {
-  const exampleModPath = new URL("./exampleMod.ts", import.meta.url).pathname;
-
-  console.log(exampleModPath);
+  const exampleModPath = resolve("./exampleMod.ts");
 
   // Import `denoCwd` from a Worker with Deno namespace enabled, but read permission restricted
   const { denoCwd, [release]: terminate } = await importw(
