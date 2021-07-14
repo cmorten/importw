@@ -1,6 +1,6 @@
-.PHONY: build ci deps doc fmt fmt-check lint lock test typedoc
+.PHONY: build ci deps doc fmt fmt-check lint test typedoc
 
-FILES_TO_FORMAT = ./src ./test ./deps.ts ./mod.ts ./version.ts ./examples ./lock.json
+FILES_TO_FORMAT = ./src ./test ./deps.ts ./mod.ts ./version.ts ./examples
 
 build:
 	@deno run --unstable --reload mod.ts
@@ -25,9 +25,6 @@ fmt-check:
 
 lint:
 	@deno lint --unstable ${FILES_TO_FORMAT}
-
-lock:
-	@deno run --lock=lock.json --lock-write --unstable --reload mod.ts
 
 test:
 	@deno test --unstable --allow-none --allow-net --allow-read

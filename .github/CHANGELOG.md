@@ -1,5 +1,13 @@
 # ChangeLog
 
+## [1.0.0] - 14-07-2021
+
+- feat: support Deno `1.12.0`
+- feat: support using classes in the worker
+- docs: add remote module example
+- feat: BREAKING: remove default export, change Symbol for accessing the worker to `worker`
+- feat: add new Symbol for terminating the Worker `release` 
+
 ## [0.4.0] - 25-06-2021
 
 - feat: support Deno `1.11.2` and std `0.99.0`

@@ -1,4 +1,3 @@
-// deno-lint-ignore-file no-explicit-any
 /**
  * This is a limited port of import-from-worker
  * (https://github.com/GoogleChromeLabs/import-from-worker) for Deno.
@@ -15,59 +14,62 @@
  * limitations under the License.
  */
 
-import { join } from "../deps.ts";
-import * as comlink from "./comlink.ts";
+/// <reference lib="deno.unstable" />
 
-function expectMessage(target: any, payload?: any): any {
-  return new Promise((resolve) => {
-    target.addEventListener("message", function f(ev: any) {
-      if (payload && ev.data !== payload) {
-        return;
-      }
+// @deno-types="./comlink.d.ts"
+import * as comlink from "./comlink.js";
+import { expectMessage } from "./expectMessage.ts";
+import { expose } from "./worker.ts";
 
-      target.removeEventListener("message", f);
-      resolve(ev);
-    });
-  });
+export const worker = Symbol("importw.worker");
+
+export interface ImportWorkerOptions extends Omit<WorkerOptions, "type"> {
+  base?: string;
 }
 
-export const workerSymbol = Symbol("WORKER_SYMBOL");
+export type ImportWorker<T> = comlink.Remote<T> & {
+  [worker]: Worker;
+  [comlink.releaseProxy]: () => void;
+};
 
-export default async function importw(
+// deno-lint-ignore no-explicit-any
+export async function importw<T = any>(
   path: string,
-  { name, base = Deno.cwd(), deno = false }: {
-    name?: string;
-    base?: string;
-    deno?: any;
-  } = {},
-) {
-  const url = path.includes(":/") ? path : join(base, path);
-  const worker = new Worker(import.meta.url, { type: "module", name, deno });
-  await expectMessage(worker, "waiting");
-  worker.postMessage(url);
-  await expectMessage(worker, "ready");
+  { name, deno = false }: ImportWorkerOptions = {},
+): Promise<ImportWorker<T>> {
+  const url = new URL(path, `file://${Deno.cwd()}/`);
+  const importSpecifier = url.protocol === "file:" ? url.pathname : url.href;
 
-  const api = comlink.wrap(worker);
+  const importWorker = new Worker(import.meta.url, {
+    type: "module",
+    name,
+    deno,
+  });
 
-  return new Proxy(api, {
-    get(target: any, prop) {
-      if (prop === workerSymbol) {
-        return worker;
+  await expectMessage(importWorker, "waiting");
+
+  importWorker.postMessage(importSpecifier);
+
+  await expectMessage(importWorker, "ready");
+
+  const api: comlink.Remote<T> = comlink.wrap(importWorker);
+
+  return new Proxy<comlink.Remote<T>>(api, {
+    get(target, prop) {
+      if (prop === worker) {
+        return importWorker;
+      } else if (prop === comlink.releaseProxy) {
+        return async function terminate() {
+          await target[comlink.releaseProxy]();
+          importWorker.terminate();
+        };
       }
 
-      return target[prop];
+      return target[prop as keyof comlink.Remote<T>];
     },
-  });
+  }) as ImportWorker<T>;
 }
-
-export { importw };
 
 if (!("window" in self)) {
-  (async function run(w: any = self) {
-    w.postMessage("waiting");
-    const { data } = await expectMessage(w);
-    const nodule = await import(data);
-    w.postMessage("ready");
-    comlink.expose(nodule);
-  })();
+  expose();
 }

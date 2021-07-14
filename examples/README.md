@@ -6,5 +6,7 @@ applications:
 
 - [basic](./basic) - A basic example of importing a module in a Worker with and
   without access to the Deno namespace.
+- [remote](./remote) - An example of importing a remote module in a permission
+  restricted Worker.
 - [restrictedRead](./restrictedRead) - An example of importing a module in a
   Worker with the Deno namespace enabled, but read permission disallowed.

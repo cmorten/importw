@@ -27,41 +27,46 @@ Permission restricted imports for Deno.
 ```ts
 import {
   importw,
-  workerSymbol,
-} from "https://x.nest.land/importw@0.4.0/mod.ts";
+  release,
+  worker,
+} from "https://deno.land/x/importw@1.0.0/mod.ts";
 
-// Import module from within a worker
-const { log, add, [workerSymbol]: worker } = await importw(
-  "https://x.nest.land/importw@0.4.0/examples/basic/exampleMod.ts",
+// Import module from within a worker.
+const { log, add, [release]: terminate, [worker]: workerRef } = await importw(
+  "https://deno.land/x/importw@1.0.0/examples/basic/exampleMod.ts",
   {
     name: "exampleWorker",
     deno: false,
   },
 );
 
-// Run code within worker
+// Have access to the underlying Worker
+console.log(workerRef.constructor.name); // Worker
+
+// Run code within the Worker
 await log(`add(40, 2) in a worker:`, await add(40, 2));
 
-(worker as Worker).terminate();
+// Gracefully release Worker resources
+await terminate();
 ```
 
 ## About
 
-This module is a PoC for demonstrating how one could import modules from within
-a Deno Worker and expose the methods to the main runtime.
+This module allows users to import modules from within a Deno Worker and expose
+the methods to the main runtime.
 
-This allows for isolation around the imported module, and allows consumers to
-restrict an imported module's access to the Deno namespace and / or privileged
-operations.
+This allows for a degree of isolation around the imported module, and allows
+consumers to restrict an imported module's access to the Deno namespace and / or
+privileged operations.
+
+**Note:** this module does not provide full isolation as Workers run in-process.
+If your code is long running you may be vulnerable to side channel timing
+attacks if you are using this module for security purposes.
 
 This module consists of ports / adaptions of
 [Comlink](https://github.com/GoogleChromeLabs/comlink) and
-[import-from-worker](https://github.com/GoogleChromeLabs/import-from-worker) as
-well as a few other libraries to create the bridge between main runtime and
-Worker. Due to limited support for Workers in Deno, some features of Comlink
-etc. are not available as they require structured cloning, transfer objects and
-the MessageChannel API, which have not yet landed in Deno yet. Simple functional
-examples work well however.
+[import-from-worker](https://github.com/GoogleChromeLabs/import-from-worker) to
+create the bridge between main runtime and Worker.
 
 ## Examples
 
