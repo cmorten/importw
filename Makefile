@@ -27,7 +27,7 @@ lint:
 	@deno lint --unstable ${FILES_TO_FORMAT}
 
 test:
-	@deno test --unstable --allow-none --allow-net --allow-read
+	@deno test --unstable --allow-none --allow-net --allow-read --allow-write
 
 typedoc:
 	@rm -rf docs
