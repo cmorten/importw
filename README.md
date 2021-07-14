@@ -61,7 +61,7 @@ privileged operations.
 
 **Note:** this module does not provide full isolation as Workers run in-process.
 If your code is long running you may be vulnerable to side channel timing
-attacks if you are using this module for security purposes.
+attacks.
 
 This module consists of ports / adaptions of
 [Comlink](https://github.com/GoogleChromeLabs/comlink) and
