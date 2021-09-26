@@ -1,9 +1,9 @@
 /**
  * Version of importw.
  */
-export const VERSION = "1.0.0";
+export const VERSION = "1.1.0";
 
 /**
  * Supported version of Deno.
  */
-export const DENO_SUPPORTED_VERSIONS = ["1.12.0"];
+export const DENO_SUPPORTED_VERSIONS = ["1.14.1"];

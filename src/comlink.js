@@ -17,8 +17,8 @@ const throwMarker = Symbol("Comlink.thrown");
 const isObject = (val) =>
   (typeof val === "object" && val !== null) || typeof val === "function";
 /**
-  * Internal transfer handle to handle objects marked to proxy.
-  */
+ * Internal transfer handle to handle objects marked to proxy.
+ */
 const proxyTransferHandler = {
   canHandle: (val) => isObject(val) && val[proxyMarker],
   serialize(obj) {
@@ -32,8 +32,8 @@ const proxyTransferHandler = {
   },
 };
 /**
-  * Internal transfer handler to handle thrown exceptions.
-  */
+ * Internal transfer handler to handle thrown exceptions.
+ */
 const throwTransferHandler = {
   canHandle: (value) => isObject(value) && throwMarker in value,
   serialize({ value }) {
@@ -63,8 +63,8 @@ const throwTransferHandler = {
   },
 };
 /**
-  * Allows customizing the serialization of certain values.
-  */
+ * Allows customizing the serialization of certain values.
+ */
 const transferHandlers = new Map([
   ["proxy", proxyTransferHandler],
   ["throw", throwTransferHandler],

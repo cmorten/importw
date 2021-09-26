@@ -29,11 +29,11 @@ import {
   importw,
   release,
   worker,
-} from "https://deno.land/x/importw@1.0.0/mod.ts";
+} from "https://deno.land/x/importw@1.1.0/mod.ts";
 
 // Import module from within a worker.
 const { log, add, [release]: terminate, [worker]: workerRef } = await importw(
-  "https://deno.land/x/importw@1.0.0/examples/basic/exampleMod.ts",
+  "https://deno.land/x/importw@1.1.0/examples/basic/exampleMod.ts",
   {
     name: "exampleWorker",
     deno: false,

@@ -1,5 +1,9 @@
 # ChangeLog
 
+## [1.1.0] - 26-09-2021
+
+- feat: support Deno `1.14.1`
+
 ## [1.0.0] - 14-07-2021
 
 - feat: support Deno `1.12.0`
