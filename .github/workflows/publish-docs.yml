@@ -16,10 +16,10 @@ jobs:
           node-version: 12
       - name: Install deps
         run: make deps
-      - name: Use Deno v1.12.0
+      - name: Use Deno v1.14.1
         uses: denolib/setup-deno@v2
         with:
-          deno-version: 1.12.0
+          deno-version: 1.14.1
       - run: make typedoc
       - run: make ci
       - name: Publish Updated Type Docs

@@ -1,7 +1,7 @@
 {
     "name": "importw",
     "description": "Permission restricted imports for Deno.",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "repository": "https://github.com/asos-craigmorten/importw",
     "stable": true,
     "checkFormat": false,
