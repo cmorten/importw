@@ -38,7 +38,7 @@ export async function importw<T = any>(
   { name, deno = false }: ImportWorkerOptions = {},
 ): Promise<ImportWorker<T>> {
   const url = new URL(path, `file://${Deno.cwd()}/`);
-  const importSpecifier = url.protocol === "file:" ? url.pathname : url.href;
+  const importSpecifier = url.href;
 
   const importWorker = new Worker(import.meta.url, {
     type: "module",
